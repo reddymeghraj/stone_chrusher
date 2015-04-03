@@ -1,0 +1,18 @@
+{
+ "add_total_row": 0, 
+ "apply_user_permissions": 0, 
+ "creation": "2015-01-27 11:42:07.176123", 
+ "disabled": 0, 
+ "docstatus": 0, 
+ "doctype": "Report", 
+ "is_standard": "Yes", 
+ "modified": "2015-02-17 17:15:24.113718", 
+ "modified_by": "Administrator", 
+ "module": "Stone Crusher", 
+ "name": "crdit_debit", 
+ "owner": "Administrator", 
+ "query": "select(SELECT sum(amount) \nFROM   (\n   SELECT sum(`tabBore Blasting`.amount) as amount FROM `tabBore Blasting` where `tabBore Blasting`.date=curdate()\n   UNION ALL\n   SELECT sum(`tabDiesel Purchase`.amount) as amount FROM `tabDiesel Purchase` where `tabDiesel Purchase`.date=curdate()\n   UNION ALL\n   select sum(`tabEmployee Salary`.salary)as amount from `tabEmployee Salary` where `tabEmployee Salary`.payment_date=curdate()\n   UNION ALL\n   select sum(`tabExpence`.amount)as amount from `tabExpence` where `tabExpence`.date=curdate()\n   UNION ALL\n   select sum(`tabGroup Trip`.amount)as amount from `tabGroup Trip` where `tabGroup Trip`.date=curdate()\n   UNION ALL\n   select sum(`tabMaintainance`.labour_charge)as amount from  `tabMaintainance` where `tabMaintainance`.date=curdate() \n  UNION ALL\n  select sum(`tabPurchase`.amount)as amount from `tabPurchase` where `tabPurchase`.date=curdate()\n  UNION ALL\n  select sum(`tabTractor Blasting`.amount)as amount from `tabTractor Blasting` where `tabTractor Blasting`.date=curdate()\nUNION ALL\nselect sum(`tabTrip`.total_amount)as amount from `tabTrip` where `tabTrip`.date=curdate()\n ) x)as Debit,\n\n(select sum(`tabSale`.amount) from `tabSale` where `tabSale`.date=curdate())as Credit,\n\n(select sum(`tabPurchase`.vat_amount) from `tabPurchase` where `tabPurchase`.date=curdate())as Purchase_Vat,\n(select sum(`tabSale`.vat_amount) from `tabSale` where `tabSale`.date=curdate())as Sale_vat,\n(select curdate())as date", 
+ "ref_doctype": "Advance Payment", 
+ "report_name": "crdit_debit", 
+ "report_type": "Query Report"
+}

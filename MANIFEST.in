@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include stone_crusher *.css
+recursive-include stone_crusher *.csv
+recursive-include stone_crusher *.html
+recursive-include stone_crusher *.ico
+recursive-include stone_crusher *.js
+recursive-include stone_crusher *.json
+recursive-include stone_crusher *.md
+recursive-include stone_crusher *.png
+recursive-include stone_crusher *.py
+recursive-include stone_crusher *.svg
+recursive-include stone_crusher *.txt
+recursive-exclude stone_crusher *.pyc
